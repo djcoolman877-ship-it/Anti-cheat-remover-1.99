@@ -3,167 +3,219 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supernovas | Rexon Premium Mod Menu</title>
+    <title>Supernovas | WASD Flash Sale</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
-        
-        body { 
-            background-color: #050505; 
-            color: white; 
-            font-family: 'Space+Grotesk', sans-serif;
-            overflow-x: hidden;
-        }
-
-        .supernova-bg { 
-            background: radial-gradient(circle at top right, #4c1d95 0%, #050505 60%); 
-            background-attachment: fixed;
-        }
-
-        .glass { 
-            background: rgba(15, 15, 15, 0.7); 
-            backdrop-filter: blur(12px); 
-            border: 1px solid rgba(139, 92, 246, 0.2); 
-        }
-
-        .btn-nova { 
-            background: linear-gradient(135deg, #9415ca 0%, #d946ef 100%); 
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-shadow: 0 0 10px rgba(0,0,0,0.5);
-            cursor: pointer;
-        }
-
-        .btn-rexon { 
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); 
-            box-shadow: 0 0 20px rgba(245, 158, 11, 0.2);
-            cursor: pointer;
-        }
-
-        .btn-rexon:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 30px rgba(245, 158, 11, 0.5);
-        }
-
-        .glow-text-gold { text-shadow: 0 0 15px rgba(245, 158, 11, 0.5); }
-
-        #sale-popup {
-            position: fixed;
-            bottom: 20px;
-            left: -300px;
-            transition: left 0.5s ease-in-out;
-            z-index: 1000;
-        }
+        body { background-color: #050505; color: white; font-family: 'Space+Grotesk', sans-serif; overflow-x: hidden; }
+        .supernova-bg { background: radial-gradient(circle at top right, #4c1d95 0%, #050505 60%); background-attachment: fixed; }
+        .glass { background: rgba(15, 15, 15, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(139, 92, 246, 0.2); }
+        .btn-nova { background: linear-gradient(135deg, #9415ca 0%, #d946ef 100%); transition: 0.3s; cursor: pointer; }
+        .btn-rexon { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); transition: 0.3s; cursor: pointer; }
+        .btn-free { background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); transition: 0.3s; cursor: pointer; }
+        .btn-free:hover { transform: translateY(-3px); box-shadow: 0 0 20px rgba(34, 197, 94, 0.4); }
+        .glow-gold { text-shadow: 0 0 15px rgba(245, 158, 11, 0.5); }
     </style>
 </head>
 <body class="supernova-bg min-h-screen">
 
-    <div id="sale-popup" class="glass p-4 rounded-2xl border-fuchsia-500/50 flex items-center space-x-4">
-        <div class="w-10 h-10 bg-fuchsia-600 rounded-full flex items-center justify-center text-xl">🔥</div>
-        <div>
-            <p class="text-[10px] font-bold text-fuchsia-400 uppercase tracking-widest text-white">Recent Activity</p>
-            <p id="popup-text" class="text-xs font-bold text-white">Someone just bought Rexon Premium</p>
-        </div>
-    </div>
-
     <nav class="p-6 flex justify-between items-center glass sticky top-0 z-50">
         <div class="flex items-center space-x-3">
-            <div class="w-10 h-10 bg-gradient-to-tr from-purple-600 to-fuchsia-500 rounded-full flex items-center justify-center">
-                <span class="text-white font-black text-xl italic">S</span>
-            </div>
-            <div>
-                <h1 class="text-xl font-black tracking-widest uppercase leading-none text-white">Supernovas</h1>
-                <p class="text-[8px] text-fuchsia-400 font-bold tracking-[0.3em] uppercase">Marketplace</p>
-            </div>
+            <div class="w-10 h-10 bg-gradient-to-tr from-purple-600 to-fuchsia-500 rounded-full flex items-center justify-center font-black italic text-white">S</div>
+            <h1 class="text-xl font-black tracking-widest uppercase text-white">Supernovas</h1>
         </div>
-        <div class="flex space-x-6 text-[10px] font-bold tracking-widest uppercase text-white">
-            <a href="#menus" class="text-amber-400 hover:text-amber-200 transition">Mod Menus</a>
-            <a href="#tools" class="text-slate-300 hover:text-white transition">Tools</a>
-            <a href="https://discord.gg/wWyuresw" target="_blank" class="text-slate-300 hover:text-white transition">Discord</a>
+        <div class="glass px-4 py-1 rounded-full border-green-500/30">
+            <span class="text-green-400 font-bold text-[10px]">● FLASH SALE LIVE</span>
         </div>
     </nav>
 
-    <header class="py-16 px-6 text-center max-w-4xl mx-auto">
-        <h2 class="text-5xl font-black mb-4 tracking-tighter text-white uppercase italic">Elite Unity Assets</h2>
-        <div class="glass px-4 py-1 rounded-full border-green-500/30 inline-block">
-            <span class="text-green-400 font-bold text-[10px]">● LIVE SALES: <span id="sales-count">1</span></span>
-        </div>
-    </header>
-
-    <section id="menus" class="max-w-7xl mx-auto px-6 py-10">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="glass p-10 rounded-[3rem] border-amber-500/40 relative overflow-hidden group shadow-2xl shadow-amber-900/10">
-                <div class="flex justify-between items-start mb-8">
+    <main class="max-w-7xl mx-auto px-6 py-12 space-y-12">
+        
+        <section>
+            <div class="glass p-10 rounded-[3rem] border-amber-500/40 relative overflow-hidden shadow-2xl shadow-amber-900/10">
+                <div class="flex justify-between items-start mb-8 text-white">
                     <div>
-                        <span class="bg-amber-500 text-black text-[9px] px-3 py-1 rounded-full font-black uppercase tracking-widest">Top Seller</span>
-                        <h4 class="text-4xl font-black tracking-tighter text-white mt-4 glow-text-gold">REXON <span class="text-amber-500">PREMIUM</span></h4>
+                        <span class="bg-amber-500 text-black text-[9px] px-3 py-1 rounded-full font-black uppercase tracking-widest">Premium Menu</span>
+                        <h4 class="text-4xl font-black tracking-tighter mt-4 glow-gold">REXON <span class="text-amber-500">PREMIUM</span></h4>
                     </div>
-                    <p class="text-3xl font-black text-white leading-none">$12.99</p>
+                    <p class="text-3xl font-black">$12.99</p>
                 </div>
-                <a href="https://ko-fi.com/s/f5f3f840e8" onclick="handlePurchase('Rexon Premium', 12.99)" target="_blank" class="btn-rexon w-full block text-center py-5 rounded-2xl text-black font-black text-xs uppercase tracking-[0.2em]">
-                    PURCHASE REXON LICENSE
-                </a>
+                <a href="https://ko-fi.com/s/f5f3f840e8" onclick="handlePurchase('Rexon Premium', 12.99)" target="_blank" class="btn-rexon w-full block text-center py-5 rounded-2xl text-black font-black text-xs uppercase tracking-widest">PURCHASE REXON</a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="tools" class="max-w-7xl mx-auto px-6 py-20">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="glass p-8 rounded-[2.5rem] flex flex-col h-full border-fuchsia-500/20">
-                <h4 class="text-lg font-black uppercase text-fuchsia-400 mb-2">Anti-Remover</h4>
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <div class="glass p-8 rounded-[2.5rem] border-green-500/30 relative overflow-hidden">
+                <div class="absolute top-4 right-4 bg-green-500 text-black text-[8px] font-black px-2 py-1 rounded">24H ONLY</div>
+                <h4 class="text-lg font-black uppercase text-green-400 mb-2 italic">WASD Movement Script</h4>
+                <p class="text-slate-400 text-[11px] mb-4">Complete movement logic for C# Mod Menus.</p>
+                
+                <div class="mb-6 bg-red-500/10 rounded-xl p-3 border border-red-500/20 text-center">
+                    <p class="text-[8px] uppercase font-black text-red-400 mb-1 animate-pulse">Price Jumps in:</p>
+                    <p id="timer" class="text-sm font-black text-white tracking-widest">Calculating...</p>
+                </div>
+
                 <div class="flex justify-between items-center pt-6 border-t border-white/5">
+                    <div class="flex items-center">
+                        <span class="text-xl font-black text-white line-through decoration-red-500 text-opacity-50">$0.99</span>
+                        <span class="text-3xl font-black text-green-400 ml-3">$0.00</span>
+                    </div>
+                    <a href="https://ko-fi.com/s/0af0b3ad85" onclick="handlePurchase('FREE WASD Script', 0.00)" target="_blank" class="btn-free px-6 py-4 rounded-xl text-[10px] font-black uppercase text-white">GET NOW</a>
+                </div>
+            </div>
+
+            <div class="glass p-8 rounded-[2.5rem] border-fuchsia-500/20">
+                <h4 class="text-lg font-black uppercase text-fuchsia-400 mb-2 italic text-white">Anti-Remover v1.2</h4>
+                <p class="text-slate-400 text-[11px] mb-8">Detection neutralizer utility.</p>
+                <div class="flex justify-between items-center pt-10 border-t border-white/5">
                     <span class="text-2xl font-black text-white">$1.99</span>
                     <a href="https://ko-fi.com/s/06218841a8" onclick="handlePurchase('Anti-Remover', 1.99)" target="_blank" class="btn-nova px-6 py-3 rounded-xl text-[10px] font-black uppercase text-white">BUY</a>
                 </div>
             </div>
-        </div>
-    </section>
+
+        </section>
+    </main>
 
     <script>
-        // Webhook URL
         const webhookURL = "https://discord.com/api/webhooks/1498477931918266378/JFPscmCY_Nwb8YaMLvrHdC1A0Xj7FEZbNcGXUI5lZrRSscncFLv1hkwwuNWpj5KLqy7c";
 
-        let count = localStorage.getItem('totalSales') || 1;
-        document.getElementById('sales-count').innerText = count;
-
         function handlePurchase(itemName, price) {
-            // 1. Update Local UI
-            count++;
-            localStorage.setItem('totalSales', count);
-            document.getElementById('sales-count').innerText = count;
-
-            // 2. Send Discord Webhook
-            const data = {
-                username: "Supernova Marketplace Alerts",
-                avatar_url: "https://i.imgur.com/4M34hi2.png",
-                embeds: [{
-                    title: "🛒 New Checkout Started!",
-                    description: `A customer has clicked the buy button for **${itemName}**.`,
-                    color: itemName.includes('Rexon') ? 16751104 : 14422250, // Gold for Rexon, Purple for Tools
-                    fields: [
-                        { name: "Item", value: itemName, inline: true },
-                        { name: "Price", value: `$${price}`, inline: true }
-                    ],
-                    footer: { text: "Supernova Sales Tracker • 2026" },
-                    timestamp: new Date()
-                }]
-            };
-
             fetch(webhookURL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
+                body: JSON.stringify({
+                    embeds: [{
+                        title: "🛒 Marketplace Update",
+                        description: `Someone is grabbing the **${itemName}**!`,
+                        color: price === 0 ? 2212446 : 16751104,
+                        timestamp: new Date()
+                    }]
+                })
             });
         }
 
-        // Fake Sale Popups for UI
-        const popup = document.getElementById('sale-popup');
-        const popupText = document.getElementById('popup-text');
-        function showFakeSale() {
-            popupText.innerText = `Someone just bought a Supernova Asset!`;
-            popup.style.left = "20px";
-            setTimeout(() => { popup.style.left = "-400px"; }, 5000);
+        // Countdown to tomorrow 8:30 PM (24h from now)
+        const targetDate = new Date("April 28, 2026 20:30:00").getTime();
+
+        setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            document.getElementById("timer").innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
+        }, 1000);
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supernovas | WASD Flash Sale</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
+        body { background-color: #050505; color: white; font-family: 'Space+Grotesk', sans-serif; overflow-x: hidden; }
+        .supernova-bg { background: radial-gradient(circle at top right, #4c1d95 0%, #050505 60%); background-attachment: fixed; }
+        .glass { background: rgba(15, 15, 15, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(139, 92, 246, 0.2); }
+        .btn-nova { background: linear-gradient(135deg, #9415ca 0%, #d946ef 100%); transition: 0.3s; cursor: pointer; }
+        .btn-rexon { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); transition: 0.3s; cursor: pointer; }
+        .btn-free { background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); transition: 0.3s; cursor: pointer; }
+        .btn-free:hover { transform: translateY(-3px); box-shadow: 0 0 20px rgba(34, 197, 94, 0.4); }
+        .glow-gold { text-shadow: 0 0 15px rgba(245, 158, 11, 0.5); }
+    </style>
+</head>
+<body class="supernova-bg min-h-screen">
+
+    <nav class="p-6 flex justify-between items-center glass sticky top-0 z-50">
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 bg-gradient-to-tr from-purple-600 to-fuchsia-500 rounded-full flex items-center justify-center font-black italic text-white">S</div>
+            <h1 class="text-xl font-black tracking-widest uppercase text-white">Supernovas</h1>
+        </div>
+        <div class="glass px-4 py-1 rounded-full border-green-500/30">
+            <span class="text-green-400 font-bold text-[10px]">● FLASH SALE LIVE</span>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-6 py-12 space-y-12">
+        
+        <section>
+            <div class="glass p-10 rounded-[3rem] border-amber-500/40 relative overflow-hidden shadow-2xl shadow-amber-900/10">
+                <div class="flex justify-between items-start mb-8 text-white">
+                    <div>
+                        <span class="bg-amber-500 text-black text-[9px] px-3 py-1 rounded-full font-black uppercase tracking-widest">Premium Menu</span>
+                        <h4 class="text-4xl font-black tracking-tighter mt-4 glow-gold">REXON <span class="text-amber-500">PREMIUM</span></h4>
+                    </div>
+                    <p class="text-3xl font-black">$12.99</p>
+                </div>
+                <a href="https://ko-fi.com/s/f5f3f840e8" onclick="handlePurchase('Rexon Premium', 12.99)" target="_blank" class="btn-rexon w-full block text-center py-5 rounded-2xl text-black font-black text-xs uppercase tracking-widest">PURCHASE REXON</a>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <div class="glass p-8 rounded-[2.5rem] border-green-500/30 relative overflow-hidden">
+                <div class="absolute top-4 right-4 bg-green-500 text-black text-[8px] font-black px-2 py-1 rounded">24H ONLY</div>
+                <h4 class="text-lg font-black uppercase text-green-400 mb-2 italic">WASD Movement Script</h4>
+                <p class="text-slate-400 text-[11px] mb-4">Complete movement logic for C# Mod Menus.</p>
+                
+                <div class="mb-6 bg-red-500/10 rounded-xl p-3 border border-red-500/20 text-center">
+                    <p class="text-[8px] uppercase font-black text-red-400 mb-1 animate-pulse">Price Jumps in:</p>
+                    <p id="timer" class="text-sm font-black text-white tracking-widest">Calculating...</p>
+                </div>
+
+                <div class="flex justify-between items-center pt-6 border-t border-white/5">
+                    <div class="flex items-center">
+                        <span class="text-xl font-black text-white line-through decoration-red-500 text-opacity-50">$0.99</span>
+                        <span class="text-3xl font-black text-green-400 ml-3">$0.00</span>
+                    </div>
+                    <a href="https://ko-fi.com/s/0af0b3ad85" onclick="handlePurchase('FREE WASD Script', 0.00)" target="_blank" class="btn-free px-6 py-4 rounded-xl text-[10px] font-black uppercase text-white">GET NOW</a>
+                </div>
+            </div>
+
+            <div class="glass p-8 rounded-[2.5rem] border-fuchsia-500/20">
+                <h4 class="text-lg font-black uppercase text-fuchsia-400 mb-2 italic text-white">Anti-Remover v1.2</h4>
+                <p class="text-slate-400 text-[11px] mb-8">Detection neutralizer utility.</p>
+                <div class="flex justify-between items-center pt-10 border-t border-white/5">
+                    <span class="text-2xl font-black text-white">$1.99</span>
+                    <a href="https://ko-fi.com/s/06218841a8" onclick="handlePurchase('Anti-Remover', 1.99)" target="_blank" class="btn-nova px-6 py-3 rounded-xl text-[10px] font-black uppercase text-white">BUY</a>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <script>
+        const webhookURL = "https://discord.com/api/webhooks/1498477931918266378/JFPscmCY_Nwb8YaMLvrHdC1A0Xj7FEZbNcGXUI5lZrRSscncFLv1hkwwuNWpj5KLqy7c";
+
+        function handlePurchase(itemName, price) {
+            fetch(webhookURL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    embeds: [{
+                        title: "🛒 Marketplace Update",
+                        description: `Someone is grabbing the **${itemName}**!`,
+                        color: price === 0 ? 2212446 : 16751104,
+                        timestamp: new Date()
+                    }]
+                })
+            });
         }
-        setInterval(showFakeSale, 80000);
+
+        // Countdown to tomorrow 8:30 PM (24h from now)
+        const targetDate = new Date("April 28, 2026 20:30:00").getTime();
+
+        setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            document.getElementById("timer").innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
+        }, 1000);
     </script>
 </body>
 </html>
